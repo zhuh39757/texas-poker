@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#0d1511">
+  <title>德州扑克</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♠</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 登录 -->
+  <section id="login" class="screen hidden">
+    <div class="bg-deco" aria-hidden="true"></div>
+    <div class="login-box">
+      <div class="logo-cards" aria-hidden="true">
+        <div class="lc lc1"><b>A</b><i>♠</i></div>
+        <div class="lc lc2 red"><b>A</b><i>♥</i></div>
+        <div class="lc lc3"><b>K</b><i>♣</i></div>
+      </div>
+      <h1 class="title">德州扑克</h1>
+      <p class="subtitle">朋友局 · 只计积分</p>
+      <form id="login-form">
+        <input id="login-name" maxlength="12" placeholder="输入昵称" autocomplete="off" required>
+        <input id="login-pass" class="hidden" type="password" placeholder="房间口令（问房主要）" autocomplete="current-password">
+        <div class="pick-title">选一个角色</div>
+        <div class="avatar-grid" id="avatar-grid"></div>
+        <button class="primary shine" type="submit">进入牌桌</button>
+      </form>
+      <p class="hint">同一个昵称同时只能在一个页面在线；积分按昵称累计</p>
+    </div>
+  </section>
+
+  <!-- 主界面 -->
+  <section id="app" class="hidden">
+    <header>
+      <div class="status" id="status"></div>
+      <button id="btn-score" title="计分板">🏆<span class="lbl">计分</span></button>
+      <button id="btn-log" title="手牌历史和记录">📜<span class="lbl">记录</span></button>
+      <button id="btn-borrow" class="hidden" title="借筹码">💰<span class="lbl">借码</span></button>
+      <button id="btn-host" class="hidden" title="房主设置">👑<span class="lbl">房主</span></button>
+      <button id="btn-stand" class="hidden" title="离座">🚪<span class="lbl">离座</span></button>
+      <button id="btn-sound" title="声音设置">🔊</button>
+    </header>
+
+    <main id="table">
+      <div class="felt"><div class="felt-logo">♠ TEXAS HOLD'EM ♥</div></div>
+      <div class="center">
+        <div class="pot" id="pot"></div>
+        <div class="board" id="board"></div>
+        <div class="result" id="result"></div>
+      </div>
+      <div id="seats"></div>
+      <div id="fx"></div>
+      <div id="bubbles"></div>
+    </main>
+
+    <footer id="actionbar"></footer>
+
+    <!-- 左下角聊天：最近的消息实时弹出，点按钮展开面板选择发什么 -->
+    <div id="chatdock">
+      <div id="chatfeed"></div>
+      <div id="chatpanel" class="hidden">
+        <div class="chatpanel-head">聊天 <button class="close" id="chat-close">✕</button></div>
+        <div class="chat-list" id="chat-list"></div>
+        <div class="chips-row" id="chat-phrases"></div>
+        <div class="chips-row emoji-row" id="chat-emojis"></div>
+        <form class="chat-form" id="chat-form">
+          <input id="chat-input" maxlength="120" placeholder="说点什么…" autocomplete="off" enterkeyhint="send">
+          <button class="primary" type="submit">发送</button>
+        </form>
+      </div>
+      <button id="chatbtn" title="聊天">💬<span class="unread hidden" id="unread"></span></button>
+    </div>
+
+    <div class="conn hidden" id="conn">连接断开，正在重连…</div>
+  </section>
+
+  <!-- 弹窗 -->
+  <div class="modal hidden" id="modal">
+    <div class="dialog">
+      <div class="dialog-head">
+        <h2 id="modal-title"></h2>
+        <button class="close" id="modal-close">✕</button>
+      </div>
+      <div class="dialog-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

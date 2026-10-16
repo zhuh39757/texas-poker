@@ -1,0 +1,7 @@
+node_modules/
+data/
+.claude/
+*.env
+*.tgz
+*.log
+*.private.md

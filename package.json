@@ -1,0 +1,24 @@
+{
+  "name": "texas-poker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "和朋友联机的德州扑克（只计积分）",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test \"test/*.test.js\"",
+    "bots": "node tools/bots.js",
+    "pack": "tar -czf ../texas-poker.tgz --exclude=node_modules --exclude=data --exclude=*.tmp --exclude=start-server.bat ."
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.4"
+  }
+}

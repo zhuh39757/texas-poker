@@ -1,0 +1,3 @@
+# 统一用 LF 换行：deploy/*.sh 要在 Linux 上运行，遇到 Windows 的 CRLF 会直接报错
+* text=auto eol=lf
+*.bat text eol=crlf
