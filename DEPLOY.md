@@ -100,13 +100,13 @@ scp poker:~/texas-poker/data/db.json .
 ```bash
 npm run pack
 ```
-会生成 `F:\claude_workspace\texas-poker.tgz`，大约 60KB。
+会在项目文件夹的**上一级目录**生成 `texas-poker.tgz`，大约 60KB。
 
 ## 第 3 步：上传并安装
 
 在你的电脑上（Windows 10 以上自带 `scp` 和 `ssh` 命令）：
 ```bash
-scp F:\claude_workspace\texas-poker.tgz ubuntu@服务器IP:~
+scp ..\texas-poker.tgz ubuntu@服务器IP:~
 ```
 ```bash
 ssh ubuntu@服务器IP
